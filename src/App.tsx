@@ -1,11 +1,11 @@
 import './assets/css/app.css'
-import CardGrid from './CardGrid';
+import TripGrid from './TripGrid';
 
 function App() {
   return (
     <>
       <div className='card-grid'>
-          <CardGrid />      
+          <TripGrid />      
       </div>
     </>
   )
