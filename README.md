@@ -77,8 +77,9 @@ export default defineConfig([
 
 # Notes:
 1. Semantic html / Material UI split.
-2. Not sure if it was part of the test, but even inside of the JSON code block the resulting pdf would linebreak the long description rendering the JSON invalid without some vim macro magic being applied first.
+2. Not sure if it was part of the test, but even inside of the JSON code block the resulting pdf would linebreak the long description rendering the JSON invalid until some vim macro magic was applied.
 3. Checked unsplash 404s, all url's have the same length, no non ascii characters, taken down or purposefully altered?
+4. Modal can be implemented with react createPortal, with the material portal wrapper of createPortal, or the material modal wrapper of the material portal wrapper.
 
 # Questions:
 1. File structure of react components with SCSS?
