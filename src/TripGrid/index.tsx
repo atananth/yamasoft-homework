@@ -8,7 +8,6 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import SortIcon from '@mui/icons-material/Sort';
 import { useErrorBoundary } from 'react-error-boundary';
-// import data from '../trips.json';
 
 export default function TripGrid() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -58,7 +57,7 @@ export default function TripGrid() {
     <>
       {loading ? 
       (<CircularProgress />) : (
-      <Container maxWidth={false}>
+      <Container data-cy='trip-grid' maxWidth={false}>
         <Box display='flex' paddingBottom='30px'>
           <IconButton data-cy='trip-grid-sort-button' onClick={(_e) => { setSort(sort === null ? true : sort ? false : null) }}>{
           sort === null ? <SortIcon/> : 
