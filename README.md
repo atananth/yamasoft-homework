@@ -1,19 +1,32 @@
 ### HOW TO RUN:
 Repo has two final branches, one for locally running, and one for running with the fetched data mocked in cypress e2e
+
 Clone either one and follow the instructions:
-Local branch:
+
+# Local branch:
+
 >pnpm i
+
 then
+
 >pnpm run dev
+
 or
+
 >pnpm run prod
+
 And open up the printed localhost webserver url in any browser
 
-Cypress branch:
+# Cypress branch:
+
 >pnpm i
+
 then
+
 >pnpm run e2e
+
 or
+
 >pnpm run cypress
 
 # Current state:
