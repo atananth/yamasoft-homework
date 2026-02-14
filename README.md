@@ -72,6 +72,8 @@ export default defineConfig([
 ])
 ```
 
+# Current state:
+![alt text](Current.png)
 
 # Notes:
 1. Semantic html / Material UI split.
@@ -84,3 +86,5 @@ export default defineConfig([
 
 # References:
 1. https://css-tricks.com/using-styling-the-details-element/
+2. https://docs.imgix.com/en-US/apis/rendering/overview
+3. https://css-tricks.com/the-complete-guide-to-lazy-loading-images/

@@ -1,15 +1,11 @@
 import './assets/css/app.css'
-import { TripCard } from './TripCard'
-import exampleTrips from './trips.json';
+import CardGrid from './CardGrid';
 
 function App() {
   return (
     <>
       <div className='card-grid'>
-        {exampleTrips.map((trip) => {
-          return <TripCard {...trip} />;
-        })}
-        
+          <CardGrid />      
       </div>
     </>
   )
