@@ -31,7 +31,7 @@ export const TripCard = ({ id, image, name, rating, description, long_descriptio
   const handleModalClose = () => setModalOpen(false);
   
   return (
-    <Paper key={id}>
+    <Paper data-cy={`trip-card-${id}`} key={id}>
       <Modal
         open={modalOpen}
         onClose={handleModalClose}
@@ -39,7 +39,6 @@ export const TripCard = ({ id, image, name, rating, description, long_descriptio
       >
         <Box display='flex' justifyContent='center' id={`image-modal-${id}`} onClick={handleModalClose}>
           <img
-            
             style={{maxHeight: '100vh'}}
             src={`${image}?q=50&lossless=true&jpeg-progressive=true`} // quality here is set to 50
             alt='404 Image Not Found'

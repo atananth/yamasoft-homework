@@ -2,43 +2,47 @@ import Masonry from '@mui/lab/Masonry';
 import type { Trips } from '../api/types';
 import { Autocomplete, Box, CircularProgress, Container, TextField } from '@mui/material';
 import { TripCard } from '../TripCard';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import SortIcon from '@mui/icons-material/Sort';
-import { useErrorBoundary } from 'react-error-boundary';
-// import data from '../trips.json';
+// Uncomment to run locally
+import data from '../../cypress/fixtures/trips.json';
+// Comment these two to run locally
+// import { useEffect } from 'react';
+// import { useErrorBoundary } from 'react-error-boundary';
+
 
 export default function TripGrid() {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [data, setData] = useState<Trips>([]);
-  const { showBoundary } = useErrorBoundary();
+  const [loading] = useState<boolean>(false);
+  //const [data, setData] = useState<Trips>([]);
+  // const { showBoundary } = useErrorBoundary();
   
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://yamasoft.bg/trips.json');
-        if (!response.ok) {
-          // The Error object here could be more specific, like a HTTP404Error or something, depends on what the fetching library provides
-          throw new Error('Trips fetch response was not 200');
-        }
-        const data = await response.json();
-        setData(data);
-        setLoading(false);
-      } catch (err) {
-        if (err instanceof Error) {
-          console.log(err.message)
-          showBoundary(err) // throw it upwards to the error boundary
-        }
-        else {
-          console.log("Unknown Error: " + err)
-          showBoundary(err) // throw it upwards to the error boundary
-        }
-      }
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch('https://yamasoft.bg/trips.json');
+  //       if (!response.ok) {
+  //         // The Error object here could be more specific, like a HTTP404Error or something, depends on what the fetching library provides
+  //         throw new Error('Trips fetch response was not 200');
+  //       }
+  //       const data = await response.json();
+  //       setData(data);
+  //       setLoading(false);
+  //     } catch (err) {
+  //       if (err instanceof Error) {
+  //         console.log(err.message)
+  //         showBoundary(err) // throw it upwards to the error boundary
+  //       }
+  //       else {
+  //         console.log("Unknown Error: " + err)
+  //         showBoundary(err) // throw it upwards to the error boundary
+  //       }
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
 
 
   const [search, setSearch] = useState<string>('')
@@ -58,7 +62,7 @@ export default function TripGrid() {
     <>
       {loading ? 
       (<CircularProgress />) : (
-      <Container maxWidth={false}>
+      <Container data-cy='trip-grid' maxWidth={false}>
         <Box display='flex' paddingBottom='30px'>
           <IconButton data-cy='trip-grid-sort-button' onClick={(_e) => { setSort(sort === null ? true : sort ? false : null) }}>{
           sort === null ? <SortIcon/> : 

@@ -7,7 +7,7 @@ function App() {
     <>
       <div className='card-grid'>
           <ErrorBoundary onError={(error) => console.log(error)} fallback={<div data-cy='trip-grid-error' >Error related to trip grid, check console for error</div>}>
-            <TripGrid data-cy='trip-grid' />
+            <TripGrid />
           </ErrorBoundary>      
       </div>
     </>
