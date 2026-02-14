@@ -1,6 +1,6 @@
 // default App.css
 #root {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -32,4 +32,11 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
+}
+
+.rating {
+  color: gold;
+  font-weight: 900;
+  text-shadow: 2px 2px rgb(199, 172, 21);
+  font-size: 18px;
 }

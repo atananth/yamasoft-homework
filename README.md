@@ -73,7 +73,7 @@ export default defineConfig([
 ```
 
 # Current state:
-![alt text](Current.png)
+![alt text](image.png)
 
 # Notes:
 1. Semantic html / Material UI split.

@@ -1,26 +1,50 @@
+import { Paper, CardActionArea, Box, AccordionSummary, AccordionDetails, Accordion, styled } from '@mui/material'
 import type { Trip } from '../api/types.ts'
-import '../assets/css/grid.css'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Image } from 'mui-image';
+
+const Label = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#F0F0F0',
+  ...theme.typography.body2,
+  padding: theme.spacing(0.5),
+  textAlign: 'center',
+  color: (theme.vars || theme).palette.text.secondary,
+  borderBottomLeftRadius: 0,
+  borderBottomRightRadius: 0,
+  ...theme.applyStyles('dark', {
+    backgroundColor: '#1A2027',
+  }),
+}));
+
+const StyledAccordion = styled(Accordion)(({ theme }) => ({
+  backgroundColor: '#F0F0F0',
+  color: (theme.vars || theme).palette.text.secondary,
+  ...theme.applyStyles('dark', {
+    backgroundColor: '#1A2027',
+  }),
+}));
 
 export const TripCard = ({ id, image, name, rating, description, long_description }: Trip) => {
   return (
-    <>
-        <div className={`item-${id}`}>
-          <div className="card">
-            <img className='card-image' src={image} alt='404 Image not found'/>
-            <article>
-              <h1>{name}</h1>
-              <span className='rating'>{'★'.repeat(rating)}</span>
-              <details className='card-short' name="trip"> {/* name attribute can be removed to allow for multiple expanded cards at once */}
-                <summary>
-                  {description}
-                </summary>
-                <div className='card-long'>
-                  <p >{long_description}</p>
-                </div>
-              </details>
-            </article>
-          </div>
-        </div>
-    </>
+    <Paper key={id}>
+      <CardActionArea>
+        <Box>
+          <Image
+            showLoading
+            duration={350}
+            src={`${image}?q=50&lossless=true&jpeg-progressive=true`} // quality here is set to 50
+            alt='404 Image Not Found'
+          />
+        </Box>
+        {/* Since the rating is an int and not a float I prefer to use a simple repeat over a UI library component */}
+        <Label> {name} &nbsp; <span className='rating'>{'★'.repeat(rating)}</span> </Label>
+      </CardActionArea>
+        <StyledAccordion disableGutters>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            {description}
+          </AccordionSummary>
+          <AccordionDetails>{long_description}</AccordionDetails>
+        </StyledAccordion>
+    </Paper>
   )
 }
