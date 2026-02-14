@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "pnpm run sass-dev & vite",
+    "dev": "pnpm run sass-dev & vite --port 4175",
     "prod": "pnpm run sass-prod && pnpm run build && vite preview",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "e2e": "pnpm run dev; cypress run --browser chromium --spec cypress/e2e/trips.cy.js",
     "sass-dev": "sass --watch --update --style=expanded src/assets/scss:src/assets/css",
     "sass-prod": "sass --no-source-map --style=compressed src/assets/scss:src/assets/css"
   },
@@ -20,7 +21,8 @@
     "@mui/material": "^7.3.8",
     "mui-image": "^1.0.9",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-error-boundary": "^6.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -29,6 +31,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "cypress": "^15.10.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
@@ -41,6 +44,9 @@
   "pnpm": {
     "overrides": {
       "vite": "^8.0.0-beta.13"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "cypress"
+    ]
   }
 }
